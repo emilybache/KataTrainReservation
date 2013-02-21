@@ -9,8 +9,8 @@ class Train(object):
         self.maximum_reservation_percentage = maximum_reservation_percentage
         
 class ReservationRequest(object):
-    def __init__(self, seatCount):
-        self.seatCount = seatCount
+    def __init__(self, seat_count):
+        self.seat_count = seat_count
 
 class Carriage(object):
     def __init__(self, capacity):
