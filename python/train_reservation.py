@@ -21,5 +21,7 @@ class Seat(object):
     def __init__(self, carriage):
         self.carriage = carriage
         
-class ReservationException(Exception):
-    pass
+class Reservation(object):
+    def __init__(self, train, seats=None):
+        self.train = train
+        self.seats = seats or []
