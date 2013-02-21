@@ -1,18 +1,17 @@
 
+def reserve_seats(train, reservation_request):
+    # TODO: write this code!
+    pass
+
 class Train(object):
     def __init__(self, carriages=None, maximum_reservation_percentage=70):
         self.carriages = carriages or []
         self.maximum_reservation_percentage = maximum_reservation_percentage
-
-    def reserve_seats(reservation_request):
-        # TODO: write this code!
-        pass
         
 class ReservationRequest(object):
-    def reserve_seats_in(carriage):
-        # TODO: write this code!
-        pass
-        
+    def __init__(self, seatCount):
+        self.seatCount = seatCount
+
 class Carriage(object):
     def __init__(self, capacity):
         self.capacity = capacity
