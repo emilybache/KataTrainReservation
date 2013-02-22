@@ -5,8 +5,10 @@ There is a business rule that says that for the train overall, no more than 70% 
 
 Your task is to write the code that takes a reservation request, and finds a suitable carriage for it to reserve seats in. You should return a Reservation object that lists the seats you have booked, and a booking reference. If it is not possible to find suitable seats to reserve, return an empty Reservation with no booking reference. 
 
-You can get a unique booking reference using a REST-based service. For this kata, use the provided code in the "booking_reference_service" folder. Install python and CherryPy, then start the server by running
+You can get a unique booking reference using a REST-based service. For this kata, use the provided code in the "booking_reference_service" folder. Install python and CherryPy, then start the server by running:
 
-  python booking_reference_service.py
+    python booking_reference_service.py
 
-To get a unique booking reference, make a GET request to: http://localhost:8080/booking_reference
+You can use this service to get a unique booking reference. Make a GET request to: 
+
+    http://localhost:8080/booking_reference
