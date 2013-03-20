@@ -6,7 +6,7 @@ class TicketOffice(object):
 
 class ReservationRequest(object):
     def __init__(self, train, seat_count):
-        this.train = train
+        self.train = train
         self.seat_count = seat_count
 
 class Reservation(object):
@@ -15,3 +15,11 @@ class Reservation(object):
         self.seats = seats or []
         self.booking_reference = booking_reference
 
+class Train(object):
+    def __init__(self, seats=None):
+        self.seats = seats or []
+
+class Seat(object):
+    def __init__(self, carriage, seat_number):
+        self.carriage = carriage
+        self.seat_number = seat_number
