@@ -1,6 +1,6 @@
 
 class TicketOffice(object):
-    def reserve_seats(self, reservation_request):
+    def make_reservation(self, reservation_request):
         # TODO: write this code!
         pass
 
