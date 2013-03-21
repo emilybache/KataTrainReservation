@@ -1,10 +1,10 @@
 
 class TicketOffice(object):
-	def __init__(self, trains=None):
-		self.trains = trains or {}
-	
-	def add_train(self, train_id, train):
-		self.trains[train_id] = train
+    def __init__(self, trains=None):
+        self.trains = trains or {}
+    
+    def add_train(self, train_id, train):
+        self.trains[train_id] = train
 
     def make_reservation(self, reservation_request):
         # TODO: write this code!
