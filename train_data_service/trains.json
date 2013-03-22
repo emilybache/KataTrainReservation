@@ -1,0 +1,37 @@
+{ "local_1000" : { "seats" : [ { "carriage" : "1", "seat_number" : "1" },
+                               { "carriage" : "1", "seat_number" : "2" }, 
+                               { "carriage" : "1", "seat_number" : "3" },
+                               { "carriage" : "1", "seat_number" : "4" },
+                               { "carriage" : "2", "seat_number" : "1" },
+                               { "carriage" : "2", "seat_number" : "2" }, 
+                               { "carriage" : "2", "seat_number" : "3" },
+                               { "carriage" : "2", "seat_number" : "4" },
+                               { "carriage" : "2", "seat_number" : "5" },
+                               { "carriage" : "2", "seat_number" : "6" },
+                               { "carriage" : "2", "seat_number" : "7" },
+                               { "carriage" : "2", "seat_number" : "8" },
+                               { "carriage" : "3", "seat_number" : "1" },
+                               { "carriage" : "3", "seat_number" : "2" },
+                               { "carriage" : "3", "seat_number" : "3" },
+                               { "carriage" : "3", "seat_number" : "4" }
+                             ]
+                  },
+  "express_2000" : { "seats" : [ { "carriage" : "1", "seat_number" : "1" },
+                                 { "carriage" : "1", "seat_number" : "2" }, 
+                                 { "carriage" : "1", "seat_number" : "3" },
+                                 { "carriage" : "1", "seat_number" : "4" },
+                                 { "carriage" : "1", "seat_number" : "5" },
+                                 { "carriage" : "1", "seat_number" : "6" },
+                                 { "carriage" : "1", "seat_number" : "7" },
+                                 { "carriage" : "1", "seat_number" : "8" },
+                                 { "carriage" : "2", "seat_number" : "1" },
+                                 { "carriage" : "2", "seat_number" : "2" }, 
+                                 { "carriage" : "2", "seat_number" : "3" },
+                                 { "carriage" : "2", "seat_number" : "4" },
+                                 { "carriage" : "2", "seat_number" : "5" },
+                                 { "carriage" : "2", "seat_number" : "6" },
+                                 { "carriage" : "2", "seat_number" : "7" },
+                                 { "carriage" : "2", "seat_number" : "8" }
+                               ]
+                   }
+}
