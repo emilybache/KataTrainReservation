@@ -5,7 +5,9 @@ You're working on some software for a railway operator, that will be part of the
 
 Your task is to write the code that takes a ReservationRequest, and finds suitable seats to reserve. You should return a Reservation object that lists the seats you have booked, and a booking reference. If it is not possible to find suitable seats to reserve, return an empty Reservation with no booking reference.
 
-You can get a unique booking reference using a REST-based service. For this kata, you can use the provided code in the "booking_reference_service" folder. Install [Python](http://python.org) and [CherryPy](http://www.cherrypy.org/), then start the server by running:
+You can get a unique booking reference using a REST-based service. For test purposes, you can start a local service using the provided code in the "booking_reference_service" folder. You can assume the real service will behave the same way, but be available on a different url.
+
+Install [Python](http://python.org) and [CherryPy](http://www.cherrypy.org/), then start the server by running:
 
     python booking_reference_service.py
 
