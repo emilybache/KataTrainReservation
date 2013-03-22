@@ -13,7 +13,19 @@ Install [Python](http://python.org) and [CherryPy](http://www.cherrypy.org/), th
 
 You can use this service to get a unique booking reference. Make a GET request to: 
 
-    http://localhost:8080/booking_reference
+    http://localhost:8082/booking_reference
+
+You can get information about which each train has by using the train data service. For test purposes, you can start a local service using the provided code in the "train_data_service" folder. You can assume the real service will behave the same way, but be available on a different url.
+
+Install [Python](http://python.org) and [CherryPy](http://www.cherrypy.org/), then start the server by running:
+
+    python train_data_service.py
+
+You can use this service to get data for example about the train with id "express_2000" like this:
+
+    http://localhost:8081/data_for_train/express_2000
+
+this will return a json document with information about the seats that this train has.
 
 ## Part 2: business rules around reservations
 
