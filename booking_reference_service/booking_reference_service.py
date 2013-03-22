@@ -12,17 +12,32 @@ class BookingReferenceService(object):
         
     booking_reference.exposed = True
     
-if __name__ == "__main__":
-    """ 
-    Use this code to start a booking reference service on http://localhost:8080/booking_reference
-    
-    If you have to restart the service, you can continue counting from the previous reference
-    by passing it on the command line
-    """
-    import sys
-    if len(sys.argv) > 1:
-        starting_point = int(sys.argv[1], 16) + 1
+def main(args):
+    if args:
+        starting_point = int(args[0], 16) + 1
     else:
         starting_point = 123456789
-    
+
+    cherrypy.config.update({"server.socket_port" : 8082})
     cherrypy.quickstart(BookingReferenceService(starting_point))
+
+if __name__ == "__main__":
+    help_text = """
+Use this program to start a booking reference service:
+
+    python booking_reference_service.py
+
+The service will start on this url:
+
+    http://localhost:8082/booking_reference
+
+If you have to restart the service, you can continue counting from the
+previous reference by passing it on the command line:
+
+    python booking_reference_service.py 75bcd15
+    """
+    import sys
+    if "-help" in sys.argv or "--help" in sys.argv or "-h" in sys.argv:
+        print help_text
+    else:
+        main(sys.argv[1:])
