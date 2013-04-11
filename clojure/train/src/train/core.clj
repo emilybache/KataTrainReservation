@@ -1,15 +1,25 @@
-(ns train.core)
+(ns train.core
+  (:require [clojure.set :as set]))
 
-(def sample-seat {:carriage "A", :number 3})
-(def sample-reservation-request {:train-id "City of New Orleans"
-                                 :seat-count 1})
-(def sample-reservation-showing-only-required-fields {:train-id "City of New Orleans"
-                                                      :seats [sample-seat]
-                                                      :booking-reference "387829"})
-
-(def sample-reservation (assoc sample-reservation-request
-                               :seats [sample-seat]
-                               :booking-reference "387829"))
+(declare train-reserved-seats)
 
 
- 
+(defn train-configuration [id]
+  )
+
+
+
+(defn train-state [id]
+  )
+
+(defn train-available-seats [id]
+  (set/difference (train-configuration id) (train-reserved-seats id)))
+
+(defn reserve-train-seats [train request-count]
+  (take request-count train))
+
+(defn make-reservation [reservation-request]
+  (assoc reservation-request
+         :seats (reserve-train-seats (train-available-seats (:train-id reservation-request))
+                                     (:seat-count reservation-request))))
+
