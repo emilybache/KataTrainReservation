@@ -16,6 +16,6 @@ class Reservation(object):
         self.booking_reference = booking_reference
 
 class Seat(object):
-    def __init__(self, carriage, seat_number):
-        self.carriage = carriage
+    def __init__(self, coach, seat_number):
+        self.coach = coach
         self.seat_number = seat_number
