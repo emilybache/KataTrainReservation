@@ -17,20 +17,8 @@
 
  
 (fact "you can reserve a single seat"
-  (make-reservation {:train-id ..id.., :seat-count 1}) => (contains {:seats [..chosen-seat..]
-                                                                     :train-id ..id..})
-  (provided
-    (train-available-seats ..id..) => ..available-seats..
-    (reserve-train-seats ..available-seats.. 1) => [..chosen-seat..]))
-  
-(fact "you can reserve N train seats"
-  (let [available-seats #{..1.. ..2.. ..3..}
-        reserved-seats (reserve-train-seats available-seats 2)]
-    (count (set/difference available-seats reserved-seats)) => 1))
-
-(fact "you can construct available seats from two services"
-  (train-available-seats ..id..) => #{..1.. ..3..}
-  (provided
-    (train-configuration ..id..) => #{..1.. ..2.. ..3..}
-    (train-reserved-seats ..id..) => #{..2..}))
-    
+  (prerequisite (take-seats 1 [..1.. ..2..]) => [..2..])
+  (let [result (make-reservation {:train-id ..id.. :seat-count 1}
+                                 {..id.. [..1.. ..2..]})]
+    (:fleet-snapshot result) => {..id.. [..1..]}
+    (:reservation result) => (contains {:train-id ..id.., :seats [..2..]})))

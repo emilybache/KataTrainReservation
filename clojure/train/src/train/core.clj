@@ -1,25 +1,15 @@
 (ns train.core
+  (:use [midje.sweet :only [unfinished]])
   (:require [clojure.set :as set]))
 
-(declare train-reserved-seats)
-
-
-(defn train-configuration [id]
-  )
+(unfinished take-seats)
 
 
 
-(defn train-state [id]
-  )
 
-(defn train-available-seats [id]
-  (set/difference (train-configuration id) (train-reserved-seats id)))
-
-(defn reserve-train-seats [train request-count]
-  (take request-count train))
-
-(defn make-reservation [reservation-request]
-  (assoc reservation-request
-         :seats (reserve-train-seats (train-available-seats (:train-id reservation-request))
-                                     (:seat-count reservation-request))))
-
+(defn make-reservation [request fleet-snapshot]
+  (let [seats-found (take-seats (:seat-count request)
+                                (get fleet-snapshot (:train-id request)))]
+    {:fleet-snapshot ["fred"]
+     :reservation (assoc request :seats seats-found)}))
+ 
