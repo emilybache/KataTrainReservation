@@ -1,9 +1,4 @@
 
-class TicketOffice(object):
-    def make_reservation(self, reservation_request):
-        # TODO: write this code!
-        pass
-
 class ReservationRequest(object):
     def __init__(self, train_id, seat_count):
         self.train_id = train_id

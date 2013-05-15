@@ -1,9 +1,3 @@
-class TicketOffice
-  def make_reservation(request)
-    # TODO: write this code!
-  end
-end
-
 class ReservationRequest
   attr_reader :train_id
   attr_reader :seat_count
@@ -33,4 +27,3 @@ class Seat
     @number = number
   end
 end
-
