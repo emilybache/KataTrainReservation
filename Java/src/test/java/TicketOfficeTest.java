@@ -12,7 +12,7 @@ public class TicketOfficeTest {
     
         assertEquals(4, reservation.seats.length);
         assertEquals("A", reservation.seats[0].coach);
-        assertEquals("75bcd15", reservation.booking_reference);
+        assertEquals("75bcd15", reservation.bookingId);
 
     }
 }
