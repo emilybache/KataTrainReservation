@@ -4,7 +4,7 @@ using TrainWreck.Core;
 namespace KataTrainReservation
 {
     [TestClass]
-    public class TicketOfficeTest {
+    public class TicketOfficeMSTest {
     
         [TestMethod]
         public void reserveSeats() {
