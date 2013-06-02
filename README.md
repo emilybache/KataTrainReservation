@@ -12,11 +12,11 @@ All the starting code for this kata is available in [my github repo](https://git
 
 You can get a unique booking reference using a REST-based service. For test purposes, you can start a local service using the provided code in the "booking_reference_service" folder. You can assume the real service will behave the same way, but be available on a different url.
 
-Install [Python](http://python.org) and [CherryPy](http://www.cherrypy.org/), then start the server by running:
+Install [Python 2.x](http://python.org) and [CherryPy](http://www.cherrypy.org/), then start the server by running:
 
     python booking_reference_service.py
 
-You can use this service to get a unique booking reference. Make a GET request to: 
+You can use this service to get a unique booking reference. Make a GET request to:
 
     http://localhost:8082/booking_reference
 
