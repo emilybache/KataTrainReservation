@@ -1,3 +1,5 @@
+import java.util.List;
+
 public class TicketOffice {
     
     private TrainDataService trainDataService;
@@ -11,8 +13,8 @@ public class TicketOffice {
     }
 
     public Reservation makeReservation(ReservationRequest request) {
-        trainDataService.getTrainInformation("express_2000");
-		return null;
+        List<Seat> trainInformation = trainDataService.getTrainInformation("express_2000");
+		return new Reservation("", trainInformation, "");
     }
 
 }
