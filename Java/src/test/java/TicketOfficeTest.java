@@ -3,6 +3,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -52,7 +53,7 @@ public class TicketOfficeTest {
 
     @Test
     public void shouldBookOneSeat() {
-        List<Seat> moreThanOneSeat = Arrays.asList(new Seat("A", 1), new Seat("A", 2));
+        List<Seat> moreThanOneSeat = createSeatsUpTo(2);
         when(trainDataService.getTrainInformation(Matchers.anyString())).thenReturn(moreThanOneSeat);
 
         ReservationRequest request = new ReservationRequest("express_2000", 1);
@@ -61,4 +62,31 @@ public class TicketOfficeTest {
         assertEquals(1, reservation.seats.size());
     }
 
+    private List<Seat> createSeatsUpTo(int numberOfSeats) {
+        List<Seat> seats = new ArrayList<Seat>();
+        for (int i = 0; i < numberOfSeats; i++) {
+            seats.add(new Seat("A", i));
+        }
+        return seats;
+    }
+
+    @Test
+    // just here for regression
+    public void shouldBookManySeats() {
+        int requestedNumberOfSeats = 2;
+        
+        when(trainDataService.getTrainInformation(Matchers.anyString())).thenReturn(createSeatsUpTo(requestedNumberOfSeats + 3));
+
+        ReservationRequest request = new ReservationRequest("express_2000", requestedNumberOfSeats);
+        Reservation reservation = office.makeReservation(request);
+
+        assertEquals(requestedNumberOfSeats, reservation.seats.size());
+    }
+
+    // more cases
+    // not enough seats
+    // train not available
+    // reuse guidance test
+    // continue with booking id
+    // variate on booking id
 }
