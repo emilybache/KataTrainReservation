@@ -13,8 +13,8 @@ public class TicketOffice {
     }
 
     public Reservation makeReservation(ReservationRequest request) {
-        List<Seat> trainInformation = trainDataService.getTrainInformation("express_2000");
-		return new Reservation("", trainInformation, "");
+        List<Seat> trainInformation = trainDataService.getTrainInformation(request.trainId);
+		return new Reservation(request.trainId, trainInformation, "");
     }
 
 }
