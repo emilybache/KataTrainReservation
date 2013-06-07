@@ -1,11 +1,11 @@
 import java.util.List;
 
 public class TicketOffice {
-    
+
     private TrainDataService trainDataService;
 
     public TicketOffice(String trainDataService, String bookingReferenceService) {
-		//TODO: implement this code!
+        //TODO: implement this code!
     }
 
     public TicketOffice(TrainDataService trainDataService, Object bookingReferenceService) {
@@ -13,8 +13,15 @@ public class TicketOffice {
     }
 
     public Reservation makeReservation(ReservationRequest request) {
-        List<Seat> trainInformation = trainDataService.getTrainInformation(request.trainId);
-		return new Reservation(request.trainId, trainInformation, "");
+        List<Seat> availableSeats = trainDataService.getTrainInformation(request.trainId);
+        
+        boolean notEnoughSeats = availableSeats.size() < request.seatCount;
+        if (notEnoughSeats) {
+            return null;
+        }
+        
+        List<Seat> requestedSeats = availableSeats.subList(0, request.seatCount);
+        return new Reservation(request.trainId, requestedSeats, "");
     }
 
 }

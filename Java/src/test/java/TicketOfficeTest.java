@@ -4,6 +4,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.Arrays;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -19,7 +20,7 @@ public class TicketOfficeTest {
         trainDataService = mock(TrainDataService.class);
         office = new TicketOffice(trainDataService, null);
     }
-    
+
     @Test
     public void shouldCallTrainDataServiceForTrainInformation() {
         ReservationRequest request = new ReservationRequest("express_2000", 4);
@@ -30,22 +31,34 @@ public class TicketOfficeTest {
 
     @Test
     public void shouldReturnValuesProvidedByTrainDataService() {
+        // books all seats - maybe need to revisit later
         Seat aSeat = new Seat("A", 1);
         when(trainDataService.getTrainInformation(Matchers.anyString())).thenReturn(Arrays.asList(aSeat));
 
-        ReservationRequest request = new ReservationRequest("express_2000", 4);
+        ReservationRequest request = new ReservationRequest("express_2000", 1);
         Reservation reservation = office.makeReservation(request);
 
         assertEquals(aSeat, reservation.seats.get(0));
         assertEquals("express_2000", reservation.trainId);
     }
-    
+
     @Test
     public void shouldCallTrainDataServiceForTrainInformationAsGivenInRequest() {
         ReservationRequest request = new ReservationRequest("cool_train", 4);
         office.makeReservation(request);
 
         verify(trainDataService).getTrainInformation(Matchers.eq("cool_train"));
+    }
+
+    @Test
+    public void shouldBookOneSeat() {
+        List<Seat> moreThanOneSeat = Arrays.asList(new Seat("A", 1), new Seat("A", 2));
+        when(trainDataService.getTrainInformation(Matchers.anyString())).thenReturn(moreThanOneSeat);
+
+        ReservationRequest request = new ReservationRequest("express_2000", 1);
+        Reservation reservation = office.makeReservation(request);
+
+        assertEquals(1, reservation.seats.size());
     }
 
 }
