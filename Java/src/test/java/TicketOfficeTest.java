@@ -1,18 +1,21 @@
-import org.junit.*;
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.mock;
+
+import org.junit.Test;
+import org.mockito.Matchers;
 
 public class TicketOfficeTest {
-    
-    @Test
-    public void reserveSeats() {
-        TicketOffice office = new TicketOffice("http://localhost:8081", "http://localhost:8082");
-        ReservationRequest request = new ReservationRequest("express_2000", 4);
-    
-        Reservation reservation = office.makeReservation(request);
-    
-        assertEquals(4, reservation.seats.size());
-        assertEquals("A", reservation.seats.get(0).coach);
-        assertEquals("75bcd15", reservation.bookingId);
 
+    @Test
+    public void shouldCallTrainDataServiceForTrainInformation() {
+        TrainDataService trainDataService = mock(TrainDataService.class);
+        TicketOffice office = new TicketOffice(trainDataService, null);
+
+        ReservationRequest request = new ReservationRequest("express_2000", 4);
+
+        office.makeReservation(request);
+
+        verify(trainDataService).getTrainInformation(Matchers.eq("express_2000"));
     }
 }
