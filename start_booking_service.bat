@@ -1,0 +1,3 @@
+cd booking_reference_service
+call python booking_reference_service.py
+pause
