@@ -28,7 +28,7 @@ You can get information about which each train has by using the train data servi
 
 Again, you need [Python](http://python.org) and [CherryPy](http://www.cherrypy.org/), then start the server by running:
 
-    python train_data_service.py
+    python start_service.py
 
 You can use this service to get data for example about the train with id "express_2000" like this:
 
@@ -36,9 +36,25 @@ You can use this service to get data for example about the train with id "expres
 
 this will return a json document with information about the seats that this train has. The document you get back will look for example like this:
 
-	{"seats": [{"coach": "A", "seat_number": "1", "coach": "A", "seat_number": "2"}]}
+    {"seats": {"7B": {"booking_reference": "", "seat_number": "7", "coach": "B"}, "3A": {"booking_reference": "", "seat_number": "3", "coach": "A"}}
 
-This data is read-only, it just tells you about the actual physical details about a particular train. I've left out all the extraneous details about where the train is going to and from, at what time, whether there's a buffet car etc. There is also no information here about which seats are already booked. It is the responsibility of the Ticket Office to keep track of that.
+Note I've left out all the extraneous details about where the train is going to and from, at what time, whether there's a buffet car etc. All that's there is which seats the train has, and if they are already booked, the "booking_reference" field will not be empty. To reserve seats on a train, you'll need to make a POST request to this url:
+
+    http://localhost:8081/reserve
+
+and attach form data for which seats to reserve. There should be three fields: 
+
+    "train_id", "seats", "booking_reference"
+
+The "seats" field should be a json encoded list of seat ids, for example:
+
+    '["1A", "1B"]'
+
+The other two fields are ordinary strings. Note the server will prevent you from booking a seat that is already reserved with another booking reference.
+
+The service has one additional method, that will remove all reservations on a particular train:
+
+    http://localhost:8081/reset/express_2000
 
 ## Part 2: Business Rules around Reservations
 
