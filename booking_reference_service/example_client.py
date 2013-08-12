@@ -1,9 +1,7 @@
 
-import urllib2, urllib
+import urllib.request
 
-def example_client():
-    request = urllib2.Request("http://localhost:8080/booking_number")
-    booking_number = urllib2.urlopen(request).read()
-    return booking_number
+url = "http://127.0.0.1:8082"
 
-        
+data = urllib.request.urlopen(url + "/booking_reference")
+print("got booking reference: ", data.read().decode("utf-8"))

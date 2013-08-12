@@ -7,7 +7,7 @@ class BookingReferenceService(object):
         self.counter = itertools.count(starting_point)
     
     def booking_reference(self):
-        next_number = self.counter.next()
+        next_number = next(self.counter)
         return str(hex(next_number))[2:]
         
     booking_reference.exposed = True
@@ -22,10 +22,11 @@ def main(args):
     cherrypy.quickstart(BookingReferenceService(starting_point))
 
 if __name__ == "__main__":
+    import sys
     help_text = """
 Use this program to start a booking reference service:
 
-    python booking_reference_service.py
+    python {0}
 
 The service will start on this url:
 
@@ -34,10 +35,9 @@ The service will start on this url:
 If you have to restart the service, you can continue counting from the
 previous reference by passing it on the command line:
 
-    python booking_reference_service.py 75bcd15
-    """
-    import sys
+    python {0} 75bcd15
+    """.format(sys.argv[0])
     if "-help" in sys.argv or "--help" in sys.argv or "-h" in sys.argv:
-        print help_text
+        print(help_text)
     else:
         main(sys.argv[1:])
