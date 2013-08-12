@@ -6,11 +6,8 @@ class TrainDataService(object):
     def __init__(self, json_data):
         self.trains = json.loads(json_data)
     
-    def data_for_train_as_dict(self, train_id):
-        return self.trains.get(train_id)
-        
     def data_for_train(self, train_id):
-        return json.dumps(self.data_for_train_as_dict(train_id))
+        return json.dumps(self.trains.get(train_id))
     
     def reserve(self, train_id, seats, booking_reference):
         train = self.trains.get(train_id)

@@ -1,3 +1,5 @@
+"""This module uses Flask to expose a TrainDataService to http requests"""
+
 from flask import Flask
 from flask import request
 app = Flask(__name__)

@@ -12,7 +12,7 @@ All the starting code for this kata is available in [my github repo](https://git
 
 You can get a unique booking reference using a REST-based service. For test purposes, you can start a local service using the provided code in the "booking_reference_service" folder. You can assume the real service will behave the same way, but be available on a different url.
 
-Install [Python 2.x](http://python.org) and [CherryPy](http://www.cherrypy.org/), then start the server by running:
+Install [Python 3.3](http://python.org) and [CherryPy](http://www.cherrypy.org/), then start the server by running:
 
     python booking_reference_service.py
 
@@ -26,7 +26,7 @@ This will return a string that looks a bit like this:
 
 You can get information about which each train has by using the train data service. For test purposes, you can start a local service using the provided code in the "train_data_service" folder. You can assume the real service will behave the same way, but be available on a different url.
 
-Again, you need [Python](http://python.org) and [CherryPy](http://www.cherrypy.org/), then start the server by running:
+Again, you need [Python 3.3](http://python.org) and [CherryPy](http://www.cherrypy.org/), then start the server by running:
 
     python start_service.py
 

@@ -1,5 +1,5 @@
 """
-This module exposes a TrainDataService using Cherrypy
+This module exposes a TrainDataService on http using Cherrypy
 """
 import json
 import cherrypy

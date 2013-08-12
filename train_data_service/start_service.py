@@ -17,6 +17,7 @@ def main(args):
         
 
 if __name__ == '__main__':
+        import sys
         help_text = """ 
     Use this program to start a train data service:
 
@@ -29,9 +30,8 @@ if __name__ == '__main__':
     You can pass on the command line the name of the json file to use as a data source. 
     It defaults to looking for "trains.json" in the current working directory.
 
-        python train_data_service.py trains.json
-        """
-        import sys
+        python {0} trains.json
+        """.format(sys.argv[0])
         if "-help" in sys.argv or "--help" in sys.argv or "-h" in sys.argv:
             print(help_text)
         else:
