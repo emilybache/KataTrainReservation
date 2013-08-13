@@ -3,9 +3,11 @@ This is a guiding test for this kata. You can run it using python 3.3 like this:
 
     python3 -m unittest guiding_test.py
 
-You need only implement one of the interfaces, and should edit this file to remove one of the test cases as appropriate. 
-You should also change the value of the "reservation_script" variable to match the name of your command line program, if
-that is the interface you have chosen.
+You need only implement one of the interfaces, and should edit this file to remove one of the 
+test cases as appropriate. 
+
+If you are using the command line interface, you should also change the value of the 
+"interpreter" and "reservation_script" variables to match the name of your command line program.
 """
 
 import urllib.request
@@ -20,7 +22,7 @@ reservation_script = os.path.join("python", "reserve.py")
 
 class TrainReservationTest(unittest.TestCase):
 
-    def hidden_test_reserve_seats_via_POST(self):
+    def test_reserve_seats_via_POST(self):
         form_data = {"train_id": "express_2000", "seats": 4}
         data = urllib.parse.urlencode(form_data)
         
