@@ -8,10 +8,6 @@ namespace KataTrainReservation
 {
     public class TicketOffice
     {
-        public TicketOffice(String trainDataService, String bookingReferenceService) 
-        {
-    		//TODO: implement this code!
-        }
         
         public Reservation MakeReservation(ReservationRequest request)
         {
