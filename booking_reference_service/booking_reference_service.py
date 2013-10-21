@@ -1,3 +1,18 @@
+"""
+You can get a unique booking reference using this service. For test purposes, you can start a local service using this code. You can assume the real service will behave the same way, but be available on a different url.
+
+Install [Python 3.3](http://python.org) and [CherryPy](http://www.cherrypy.org/), then start the server by running:
+
+    python booking_reference_service.py
+
+You can use this service to get a unique booking reference. Make a GET request to:
+
+    http://localhost:8082/booking_reference
+
+This will return a string that looks a bit like this:
+
+	75bcd15
+"""
 
 import cherrypy
 import itertools

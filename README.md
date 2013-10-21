@@ -18,7 +18,7 @@ A reservation comprises a json document with three fields, the train id, booking
 
 	{"train_id": "express_2000", "booking_reference": "75bcd15", "seats": ["1A", "1B"]}
 
-If it is not possible to find suitable seats to reserve, the service should instead return an empty list of seats and an empty string for the booking reference. The test cases in guiding_test.py outline the expected interface.
+If it is not possible to find suitable seats to reserve, the service should instead return an empty list of seats and an empty string for the booking reference. The test cases in guiding_test.py outline the expected interface. (For Python 2.x users, there is also a version called 'python2\_guiding\_test.py')
 
 ### Command line option
 
