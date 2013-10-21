@@ -1,36 +1,28 @@
 """
-This is a guiding test for this kata. You can run it using python 3.3 like this:
+Equivalent of 'guiding_test.py' except for Python2.x, which comes as standard on many systems.
 
-    python3 -m unittest guiding_test.py
+Run it with:
 
-You need only need implement one of:
-- the http interface
-- the command line interface
+    python python2_guiding_test.py
 
-Edit this file to remove one of the test cases as appropriate. 
-
-If you are using the command line interface, you should also change the value of the 
-"interpreter" and "reservation_script" variables to match the name of your command line program.
 """
-
-import urllib.request
 import json
 import subprocess
 import unittest
 import os
+import urllib2, urllib
 
 url = "http://127.0.0.1:8083"
-interpreter = "python3"
+interpreter = "python"
 reservation_script = os.path.join("python", "reserve.py")
 
 class TrainReservationTest(unittest.TestCase):
 
     def test_reserve_seats_via_POST(self):
         form_data = {"train_id": "express_2000", "seat_count": 4}
-        data = urllib.parse.urlencode(form_data)
+        data = urllib.urlencode(form_data)
         
-        req = urllib.request.Request(url + "/reserve", bytes(data, encoding="ISO-8859-1"))
-        response = urllib.request.urlopen(req).read().decode("ISO-8859-1")
+        response = urllib2.urlopen(url + "/reserve", data=data).read()
         reservation = json.loads(response)
         
         assert "express_2000" == reservation["train_id"]
@@ -47,3 +39,8 @@ class TrainReservationTest(unittest.TestCase):
         assert 4 == len(reservation["seats"])
         assert "1A" == reservation["seats"][0]
         assert "75bcd15" == reservation["booking_reference"]
+
+
+
+if __name__ == "__main__":
+    unittest.main()
