@@ -2,7 +2,24 @@
 {
 }
 
-public record Train(Dictionary<string, Seat> seats);
+public record Train(Dictionary<string, Seat> seats)
+{
+    public void Reset()
+    {
+        foreach (var seat in seats.Values)
+        {
+            seat.booking_reference = "";
+        }
+    }
+
+    public void MakeReservation(IEnumerable<string> seatIds, string bookingReference)
+    {
+        foreach (var seatId in seatIds)
+        {
+            seats[seatId].booking_reference = bookingReference;
+        }
+    }
+}
 
 public class Seat
 {

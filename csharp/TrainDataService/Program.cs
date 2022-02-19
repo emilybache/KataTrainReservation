@@ -10,7 +10,7 @@ app.UseHttpsRedirection();
 
 var trains = GetTrains();
 
-app.MapGet("/data_for_train/{train}", (string train) => trains[train]);
+app.MapGet("/data_for_train/{trainId}", (string trainId) => trains[trainId]);
 
 app.MapPost("/reserve", (ReserveRequest request) =>
 {
@@ -27,12 +27,16 @@ app.MapPost("/reserve", (ReserveRequest request) =>
             return BadRequest($"already booked with reference: {existingReservation}");
     }
 
-    // Save reservation
-    foreach (var seat in request.seats)
-    {
-        train.seats[seat].booking_reference = request.booking_reference;
-    }
+    train.MakeReservation(request.seats, request.booking_reference);
+    
+    return Ok(train);
+});
 
+app.MapPost("/reset/{trainId}", (string trainId) =>
+{
+    var train = trains[trainId];
+    train.Reset();
+    
     return Ok(train);
 });
 
