@@ -1,3 +1,5 @@
+_Support this and all my katas via [Patreon](https://www.patreon.com/EmilyBache)_
+
 # Kata: Train Reservation
 
 Railway operators aren't always known for their use of cutting edge technology, and in this case they're a little behind the times. The railway people want you to help them to improve their online booking service. They'd like to be able to not only sell tickets online, but to decide exactly which seats should be reserved, at the time of booking.
